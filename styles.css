@@ -106,7 +106,8 @@ html {
 .section-content {
   max-width: 900px;
   width: 100%;
-  z-index: 2;
+  z-index: 3;
+  position: relative;
 }
 
 /* Welcome Section */
@@ -114,23 +115,80 @@ html {
   background: linear-gradient(135deg, #fff5f7 0%, #ffe0e8 100%);
   text-align: center;
   padding-top: clamp(60px, 10vw, 100px);
+  position: relative;
 }
 
-.heart-beat {
-  width: 100px;
-  height: 100px;
-  margin: 0 auto 30px;
-  background: var(--primary-color);
-  border-radius: 50%;
-  animation: heartBeat 1.3s ease-in-out infinite;
+/* Background Floating Hearts */
+.background-hearts {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  pointer-events: none;
+  opacity: 0.15;
+  overflow: hidden;
 }
 
-@keyframes heartBeat {
-  0%, 100% { transform: scale(1); }
-  14% { transform: scale(1.15); }
-  28% { transform: scale(1); }
-  42% { transform: scale(1.15); }
-  56% { transform: scale(1); }
+.background-hearts span {
+  font-size: clamp(3rem, 15vw, 8rem);
+  animation: floatHeartsBg 6s ease-in-out infinite;
+  position: absolute;
+}
+
+.background-hearts span:nth-child(1) { 
+  left: 10%; 
+  animation-delay: 0s;
+  animation-duration: 6s;
+}
+.background-hearts span:nth-child(2) { 
+  left: 20%; 
+  animation-delay: 0.5s;
+  animation-duration: 7s;
+}
+.background-hearts span:nth-child(3) { 
+  left: 30%; 
+  animation-delay: 1s;
+  animation-duration: 8s;
+}
+.background-hearts span:nth-child(4) { 
+  left: 40%; 
+  animation-delay: 1.5s;
+  animation-duration: 6.5s;
+}
+.background-hearts span:nth-child(5) { 
+  left: 50%; 
+  animation-delay: 2s;
+  animation-duration: 7.5s;
+}
+.background-hearts span:nth-child(6) { 
+  left: 60%; 
+  animation-delay: 0.3s;
+  animation-duration: 6.8s;
+}
+.background-hearts span:nth-child(7) { 
+  left: 70%; 
+  animation-delay: 0.8s;
+  animation-duration: 7.2s;
+}
+.background-hearts span:nth-child(8) { 
+  left: 80%; 
+  animation-delay: 1.3s;
+  animation-duration: 6.5s;
+}
+
+@keyframes floatHeartsBg {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.15;
+  }
+  50% {
+    transform: translateY(-30px) scale(1.1);
+    opacity: 0.25;
+  }
 }
 
 .main-title {
@@ -139,6 +197,8 @@ html {
   font-weight: 900;
   margin-bottom: 10px;
   animation: titleBounce 0.8s ease-out;
+  position: relative;
+  z-index: 3;
 }
 
 @keyframes titleBounce {
@@ -151,6 +211,8 @@ html {
   color: var(--accent-color);
   margin-bottom: 20px;
   font-weight: 600;
+  position: relative;
+  z-index: 3;
 }
 
 .flowers {
@@ -158,6 +220,8 @@ html {
   justify-content: center;
   gap: clamp(10px, 3vw, 20px);
   margin: 20px 0;
+  position: relative;
+  z-index: 3;
 }
 
 .flower {
@@ -181,6 +245,9 @@ html {
   margin: 25px 0;
   font-weight: 500;
   animation: welcomeSlideIn 0.8s ease-out 0.2s backwards;
+  position: relative;
+  z-index: 3;
+}
 }
 
 @keyframes welcomeSlideIn {
@@ -225,6 +292,8 @@ html {
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   color: white;
   margin-top: 20px;
+  position: relative;
+  z-index: 3;
 }
 
 .btn-primary:active {
@@ -627,9 +696,8 @@ html {
     padding: clamp(20px, 3vw, 30px) clamp(16px, 4vw, 40px);
   }
 
-  .heart-beat {
-    width: 60px;
-    height: 60px;
+  .background-hearts {
+    display: none;
   }
 
   .main-title {
@@ -654,38 +722,100 @@ html {
 @media (min-width: 900px) {
   .section {
     padding: 60px 40px;
+    min-height: 100vh;
+  }
+
+  .main-title {
+    font-size: 4.5rem;
+  }
+
+  .main-subtitle {
+    font-size: 1.5rem;
+  }
+
+  .welcome-text {
+    font-size: 1.3rem;
+  }
+
+  .section-title {
+    font-size: 2.8rem;
+    margin-bottom: 50px;
   }
 
   .cards-grid {
     grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
   }
 
   .memories-grid {
     grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
   }
 
   .gallery-grid {
     grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+  }
+
+  .card {
+    padding: 30px;
+    cursor: pointer;
   }
 
   .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 12px 35px rgba(255, 23, 68, 0.15);
+    transform: translateY(-15px);
+    box-shadow: 0 20px 40px rgba(255, 23, 68, 0.2);
+  }
+
+  .memory-card {
+    padding: 30px;
+    cursor: pointer;
   }
 
   .memory-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-15px);
     background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 20px 40px rgba(255, 23, 68, 0.2);
+  }
+
+  .photo-placeholder {
+    cursor: pointer;
   }
 
   .photo-placeholder:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 12px 35px rgba(255, 23, 68, 0.15);
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 20px 40px rgba(255, 23, 68, 0.2);
+  }
+
+  .btn-primary {
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    cursor: pointer;
   }
 
   .btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(255, 23, 68, 0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 23, 68, 0.4);
+  }
+
+  .btn-primary:active {
+    transform: translateY(-2px);
+  }
+
+  .confession-card {
+    padding: 50px;
+  }
+
+  .future-card {
+    padding: 50px;
+  }
+
+  .final-card {
+    padding: 50px;
+  }
+
+  .section-welcome:hover .background-hearts {
+    opacity: 0.25;
   }
 }
 
