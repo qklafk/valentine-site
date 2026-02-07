@@ -116,6 +116,9 @@ html {
   text-align: center;
   padding-top: clamp(60px, 10vw, 100px);
   position: relative;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 100vh;
 }
 
 
