@@ -1,17 +1,285 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="Иришка 💕" />
-    <meta name="theme-color" content="#ff1744" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Иришка 💕">
+    <meta name="theme-color" content="#ff1744">
     <title>Мой Сюрприз для Иришки 💕</title>
+    <link rel="stylesheet" href="styles.css">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+</head>
+<body>
+    <div id="particles"></div>
+
+    <!-- Welcome Section -->
+    <section id="welcome" class="section section-welcome">
+        <div class="section-content">
+            <div class="heart-beat"></div>
+            <h1 class="main-title">Иришка 💕</h1>
+            <p class="main-subtitle">14 Февраля</p>
+            
+            <div class="flowers">
+                <span class="flower">🌹</span>
+                <span class="flower">🌷</span>
+                <span class="flower">💐</span>
+                <span class="flower">🌹</span>
+            </div>
+            
+            <p class="welcome-text">Дай мне рассказать о том, какая ты волшебная... ✨</p>
+            <button class="btn btn-primary">Начнем! 💘</button>
+        </div>
+    </section>
+
+    <!-- Gallery Section 1 -->
+    <section class="gallery-section">
+        <div class="gallery-grid">
+            <div class="photo-card">
+                <div class="photo-placeholder">📸</div>
+                <p>Наш первый момент</p>
+            </div>
+            <div class="photo-card">
+                <div class="photo-placeholder">✨</div>
+                <p>Твой взгляд</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Confession Section -->
+    <section class="section section-dark">
+        <div class="section-content">
+            <h2 class="section-title">Мое признание 💕</h2>
+            
+            <div class="confession-card">
+                <p class="confession-start">Иришка, люби меня так, как я люблю тебя.</p>
+                
+                <div class="divider"></div>
+                
+                <p class="confession-text">
+                    С того момента, как я тебя встретил, жизнь стала совсем другой. Ты не просто девушка - ты целый мир красоты, смеха и тепла.
+                </p>
+
+                <p class="confession-text">
+                    Твоя улыбка ярче всех звезд. Твой смех - мелодия, которую я хочу слышать всю жизнь. Твое присутствие - волшебство, что происходит каждый день.
+                </p>
+
+                <p class="confession-text">
+                    Ты делаешь обычные моменты особенными. Ты делаешь мою жизнь идеальной. И я благодарен за каждую секунду с тобой.
+                </p>
+
+                <div class="divider"></div>
+
+                <p class="confession-end">Я люблю тебя. 💕</p>
+            </div>
+
+            <div class="floating-hearts">
+                <span>❤️</span>
+                <span>💕</span>
+                <span>💖</span>
+                <span>💗</span>
+                <span>💓</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section 2 -->
+    <section class="gallery-section">
+        <div class="gallery-grid">
+            <div class="photo-card">
+                <div class="photo-placeholder">😊</div>
+                <p>Улыбка которую люблю</p>
+            </div>
+            <div class="photo-card">
+                <div class="photo-placeholder">🌟</div>
+                <p>Моя звезда</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section section-light">
+        <div class="section-content">
+            <h2 class="section-title">О нас двоих 👫</h2>
+            
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-emoji">❤️</div>
+                    <h3>Что я люблю в тебе</h3>
+                    <p>Твоя доброта, твой смех, твои глаза. Я люблю каждую часть тебя.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-emoji">✨</div>
+                    <h3>Волшебство</h3>
+                    <p>Ты волшебна. Твоя энергия делает мир ярче и теплее.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-emoji">🌈</div>
+                    <h3>Мой цвет</h3>
+                    <p>Ты - мой самый яркий, самый красивый цвет жизни.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-emoji">💫</div>
+                    <h3>Моя мечта</h3>
+                    <p>Мечта, которая сбылась. Реальность лучше воображения.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-emoji">🏠</div>
+                    <h3>Мой дом</h3>
+                    <p>Твое сердце - мой дом. Твои объятия - мой рай.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-emoji">🌹</div>
+                    <h3>Мой мир</h3>
+                    <p>Мой весь мир в одной Иришке. Ты - всё что мне нужно.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section 3 -->
+    <section class="gallery-section">
+        <div class="gallery-grid">
+            <div class="photo-card">
+                <div class="photo-placeholder">👫</div>
+                <p>Вместе</p>
+            </div>
+            <div class="photo-card">
+                <div class="photo-placeholder">🤍</div>
+                <p>Неразлучны</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Memories Section -->
+    <section class="section section-dark">
+        <div class="section-content">
+            <h2 class="section-title">Наши Моменты 💭</h2>
+            
+            <div class="memories-grid">
+                <div class="memory-card">
+                    <div class="memory-icon">🎭</div>
+                    <h3>Смех</h3>
+                    <p>Твой смех - мой любимый звук в этом мире</p>
+                </div>
+
+                <div class="memory-card">
+                    <div class="memory-icon">🌙</div>
+                    <h3>Ночные разговоры</h3>
+                    <p>Бесценные часы только ты и я</p>
+                </div>
+
+                <div class="memory-card">
+                    <div class="memory-icon">🎵</div>
+                    <h3>Музыка</h3>
+                    <p>Каждая песня напоминает мне о тебе</p>
+                </div>
+
+                <div class="memory-card">
+                    <div class="memory-icon">🚶</div>
+                    <h3>Прогулки</h3>
+                    <p>Даже просто рядом с тобой - счастье</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section 4 -->
+    <section class="gallery-section">
+        <div class="gallery-grid">
+            <div class="photo-card">
+                <div class="photo-placeholder">🌅</div>
+                <p>Рассвет вместе</p>
+            </div>
+            <div class="photo-card">
+                <div class="photo-placeholder">🌙</div>
+                <p>Закат вместе</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Section -->
+    <section class="section section-light">
+        <div class="section-content">
+            <h2 class="section-title">Наше Будущее 🌟</h2>
+            
+            <div class="future-card">
+                <p class="future-intro">
+                    Я вижу нас в каждом дне, каждом году, каждом мгновении. Я вижу нашу жизнь, наполненную любовью и счастьем.
+                </p>
+                
+                <div class="future-list">
+                    <div class="future-item">
+                        <span class="number">1</span>
+                        <p>Просыпаться и видеть твое лицо</p>
+                    </div>
+                    <div class="future-item">
+                        <span class="number">2</span>
+                        <p>Создавать с тобой бесценные моменты</p>
+                    </div>
+                    <div class="future-item">
+                        <span class="number">3</span>
+                        <p>Быть твоей опорой и поддержкой</p>
+                    </div>
+                    <div class="future-item">
+                        <span class="number">4</span>
+                        <p>Расти вместе с тобой</p>
+                    </div>
+                    <div class="future-item">
+                        <span class="number">5</span>
+                        <p>Любить тебя вечно</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section 5 -->
+    <section class="gallery-section">
+        <div class="gallery-grid">
+            <div class="photo-card">
+                <div class="photo-placeholder">💍</div>
+                <p>Будущие обещания</p>
+            </div>
+            <div class="photo-card">
+                <div class="photo-placeholder">♾️</div>
+                <p>Вечность</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Section -->
+    <section class="section section-final">
+        <div class="section-content">
+            <div class="final-card">
+                <h2>С Днем Святого Валентина! 💘</h2>
+                
+                <p class="final-text">Иришка, ты - моё всё.</p>
+                <p class="final-text">Ты - волшебство, которое стало реальностью.</p>
+                <p class="final-text">И я благодарен за каждый момент с тобой.</p>
+
+                <div class="final-hearts">
+                    <span>❤️</span>
+                    <span>💕</span>
+                    <span>💖</span>
+                    <span>💗</span>
+                    <span>💓</span>
+                </div>
+
+                <p class="final-signature">С любовью, Шушуня 💕</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-top" class="scroll-top" aria-label="Вверх">↑</button>
+
+    <script src="script.js"></script>
+</body>
 </html>
