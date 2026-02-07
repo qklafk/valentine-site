@@ -4,55 +4,43 @@ const tg = window.Telegram?.WebApp;
 if (tg) {
     tg.ready();
     tg.expand();
-    
-    // Меняем цвет интерфейса на розовый
+    tg.enableClosingConfirmation();
     tg.setBackgroundColor('#fff5f7');
     tg.setHeaderColor('#ff1744');
 }
 
-// Управление экранами
-function showScreen(screenId) {
-    document.querySelectorAll('.screen').forEach(screen => {
-        screen.classList.remove('active');
+// ==================== SCROLL TO TOP BUTTON ====================
+
+const scrollTopBtn = document.getElementById('btn-scroll-top');
+
+window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+        scrollTopBtn.classList.add('show');
+    } else {
+        scrollTopBtn.classList.remove('show');
+    }
+});
+
+scrollTopBtn?.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
     });
-    document.getElementById(screenId).classList.add('active');
-    
-    // Прокручиваем вверх
-    setTimeout(() => {
-        document.querySelector('.container').scrollTop = 0;
-    }, 50);
-}
-
-// Слушатели для кнопок главного экрана
-document.getElementById('btn-confession').addEventListener('click', () => {
-    showScreen('screen-confession');
-    createHeartParticles(20);
 });
 
-document.getElementById('btn-gallery').addEventListener('click', () => {
-    showScreen('screen-gallery');
-    createHeartParticles(15);
+// ==================== WELCOME SECTION ====================
+
+const btnStart = document.getElementById('btn-start');
+const sectionWelcome = document.getElementById('section-welcome');
+const sectionConfession = document.getElementById('section-confession');
+
+btnStart?.addEventListener('click', () => {
+    sectionConfession.scrollIntoView({ behavior: 'smooth' });
+    createHeartParticles(30);
 });
 
-document.getElementById('btn-quiz').addEventListener('click', () => {
-    showScreen('screen-quiz');
-    resetQuiz();
-});
+// ==================== QUIZ FUNCTIONALITY ====================
 
-// Кнопки "Назад"
-document.getElementById('btn-back-confession').addEventListener('click', () => {
-    showScreen('screen-main');
-});
-
-document.getElementById('btn-back-gallery').addEventListener('click', () => {
-    showScreen('screen-main');
-});
-
-document.getElementById('btn-back-quiz').addEventListener('click', () => {
-    showScreen('screen-main');
-});
-
-// Викторина
 let quizAnswers = {};
 
 document.querySelectorAll('.quiz-opt').forEach(button => {
@@ -76,7 +64,7 @@ document.querySelectorAll('.quiz-opt').forEach(button => {
         });
         
         // Если ответлены все вопросы, показываем результаты
-        if (Object.keys(quizAnswers).length === 3) {
+        if (Object.keys(quizAnswers).length === 4) {
             setTimeout(showQuizResults, 1500);
         }
     });
@@ -84,7 +72,6 @@ document.querySelectorAll('.quiz-opt').forEach(button => {
 
 function showQuizResults() {
     const correct = Object.values(quizAnswers).filter(v => v).length;
-    const total = Object.keys(quizAnswers).length;
     
     document.querySelectorAll('.quiz-question').forEach(q => {
         q.style.display = 'none';
@@ -94,16 +81,16 @@ function showQuizResults() {
     resultDiv.classList.remove('hidden');
     
     let resultText = '';
-    if (correct === 3) {
-        resultText = `Отлично! 🎉 Ты знаешь меня на 100%! Значит, это настоящая любовь! 💕`;
-    } else if (correct === 2) {
+    if (correct === 4) {
+        resultText = `Отлично! 🎉 Ты знаешь меня на 100%! Это настоящая любовь! 💕`;
+    } else if (correct === 3) {
         resultText = `Очень хорошо! 😊 Ты знаешь многое обо мне, и это здорово!`;
     } else {
-        resultText = `Неплохо! 😄 Но мы еще многое узнаем друг о друге!`;
+        resultText = `Неплохо! 😄 Но мы еще много узнаем друг о друге!`;
     }
     
     document.getElementById('result-text').textContent = resultText;
-    createHeartParticles(30);
+    createHeartParticles(40);
 }
 
 function resetQuiz() {
@@ -120,9 +107,14 @@ function resetQuiz() {
 
 document.getElementById('btn-restart-quiz')?.addEventListener('click', () => {
     resetQuiz();
+    window.scrollTo({
+        top: document.getElementById('section-quiz').offsetTop,
+        behavior: 'smooth'
+    });
 });
 
-// Плавающие сердца
+// ==================== FLOATING PARTICLES ====================
+
 function createHeartParticles(count) {
     const particlesContainer = document.getElementById('particles');
     const hearts = ['❤️', '💕', '💖', '💗', '💓', '💝'];
@@ -142,76 +134,23 @@ function createHeartParticles(count) {
     }
 }
 
-// Добавляем сердца при кликах
+// Добавляем сердца при кликах на интерактивные элементы
 document.addEventListener('click', (e) => {
-    if (e.target.matches('.btn, .quiz-opt, .gallery-item, .flower')) {
-        createHeartParticles(5);
+    if (e.target.matches('.btn, .quiz-opt, .gallery-card, .about-card, .flower')) {
+        createHeartParticles(8);
     }
 });
 
-// Плавающие сердца при загрузке
+// Добавляем сердца при загрузке
 window.addEventListener('load', () => {
-    createHeartParticles(10);
+    createHeartParticles(15);
 });
 
-// Музыка (опционально - добавишь свою ссылку на музыку)
-// const audio = document.getElementById('bg-music');
-// audio.src = 'URL_к_музыке';
-// audio.play().catch(e => console.log('Автоплей музыки заблокирован'));
+// ==================== MOBILE OPTIMIZATION ====================
 
-// Отправка данных на сервер (опционально)
-function sendToServer(data) {
-    const userId = tg?.initDataUnsafe?.user?.id || 'anonymous';
-    
-    fetch('/api/save-answer', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            userId,
-            ...data
-        })
-    }).catch(e => console.log('Server error:', e));
-}
-
-// Обработка жестов (свайп для закрытия)
-let touchStartX = 0;
-let touchEndX = 0;
-
-document.addEventListener('touchstart', e => {
-    touchStartX = e.changedTouches[0].screenX;
-});
-
-document.addEventListener('touchend', e => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-});
-
-function handleSwipe() {
-    const diff = touchEndX - touchStartX;
-    
-    // Свайп вправо - вернуться на главный экран
-    if (diff > 100) {
-        const activeScreen = document.querySelector('.screen.active').id;
-        if (activeScreen !== 'screen-main') {
-            showScreen('screen-main');
-        }
-    }
-}
-
-// Отправка уведомления в бота при открытии Mini App
-if (tg) {
-    const userId = tg.initDataUnsafe?.user?.id;
-    const firstName = tg.initDataUnsafe?.user?.first_name;
-    
-    // Можно логировать открытие
-    console.log(`Mini App открыта для: ${firstName} (${userId})`);
-}
-
-// Disable zoom на мобильных
-document.addEventListener('wheel', (e) => {
-    if (e.ctrlKey) {
+// Оптимизация для мобильных устройств
+document.addEventListener('touchmove', (e) => {
+    if (e.touches.length > 1) {
         e.preventDefault();
     }
 }, { passive: false });
@@ -219,3 +158,55 @@ document.addEventListener('wheel', (e) => {
 document.addEventListener('gesturestart', (e) => {
     e.preventDefault();
 });
+
+// Предотвращаем двойной tap zoom
+let lastTouchDown = 0;
+document.addEventListener('touchstart', (e) => {
+    const now = Date.now();
+    if (lastTouchDown + 300 > now) {
+        e.preventDefault();
+    }
+    lastTouchDown = now;
+}, false);
+
+// ==================== USER INFO ====================
+
+if (tg) {
+    const userId = tg.initDataUnsafe?.user?.id;
+    const firstName = tg.initDataUnsafe?.user?.first_name;
+    
+    console.log(`Mini App открыта для: ${firstName} (${userId})`);
+}
+
+// ==================== ACCESSIBILITY ====================
+
+// Улучшение доступности
+document.querySelectorAll('button').forEach(btn => {
+    if (!btn.getAttribute('aria-label')) {
+        btn.setAttribute('role', 'button');
+    }
+});
+
+// ==================== PERFORMANCE ====================
+
+// Lazy loading для изображений (если будут добавлены)
+if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                if (img.dataset.src) {
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                }
+                observer.unobserve(img);
+            }
+        });
+    });
+    
+    document.querySelectorAll('img[data-src]').forEach(img => {
+        imageObserver.observe(img);
+    });
+}
+
+console.log('✨ Сайт загружен идеально! 💕');
