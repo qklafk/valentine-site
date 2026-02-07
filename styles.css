@@ -454,6 +454,7 @@ body {
 .about-card:nth-child(4) { animation-delay: 0.4s; }
 .about-card:nth-child(5) { animation-delay: 0.5s; }
 .about-card:nth-child(6) { animation-delay: 0.6s; }
+.about-card:nth-child(7) { animation-delay: 0.7s; }
 
 @keyframes cardSlideIn {
     from {
@@ -512,6 +513,7 @@ body {
 .gallery-card:nth-child(4) { animation-delay: 0.4s; }
 .gallery-card:nth-child(5) { animation-delay: 0.5s; }
 .gallery-card:nth-child(6) { animation-delay: 0.6s; }
+.gallery-card:nth-child(7) { animation-delay: 0.7s; }
 
 @keyframes gallerySlideIn {
     from {
@@ -648,6 +650,52 @@ body {
 .quiz-opt:hover {
     border-color: var(--primary-color);
     background: #fff5f7;
+}
+
+/* ==================== LETTER SECTION ==================== */
+
+.letter-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--border-radius);
+    padding: clamp(30px, 6vw, 50px);
+    animation: confessionSlideIn 0.8s ease-out;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.letter-text {
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+    color: var(--text-light);
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 600;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.letter-paragraph {
+    font-size: clamp(1rem, 3.5vw, 1.1rem);
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.8;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.letter-final {
+    font-size: clamp(1rem, 3.5vw, 1.1rem);
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.letter-signature {
+    color: var(--accent-color);
+    font-weight: 700;
+    font-size: clamp(1.1rem, 4vw, 1.3rem);
+    display: block;
+    margin-top: 10px;
 }
 
 .quiz-opt.correct {

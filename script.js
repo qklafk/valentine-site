@@ -41,77 +41,7 @@ btnStart?.addEventListener('click', () => {
 
 // ==================== QUIZ FUNCTIONALITY ====================
 
-let quizAnswers = {};
-
-document.querySelectorAll('.quiz-opt').forEach(button => {
-    button.addEventListener('click', function() {
-        const question = this.closest('.quiz-question');
-        const isCorrect = this.dataset.correct === 'true';
-        const questionId = question.id;
-        
-        // Отключаем все кнопки на этом вопросе
-        question.querySelectorAll('.quiz-opt').forEach(btn => {
-            btn.disabled = true;
-            if (btn === this) {
-                if (isCorrect) {
-                    btn.classList.add('correct');
-                    quizAnswers[questionId] = true;
-                } else {
-                    btn.classList.add('incorrect');
-                    quizAnswers[questionId] = false;
-                }
-            }
-        });
-        
-        // Если ответлены все вопросы, показываем результаты
-        if (Object.keys(quizAnswers).length === 4) {
-            setTimeout(showQuizResults, 1500);
-        }
-    });
-});
-
-function showQuizResults() {
-    const correct = Object.values(quizAnswers).filter(v => v).length;
-    
-    document.querySelectorAll('.quiz-question').forEach(q => {
-        q.style.display = 'none';
-    });
-    
-    const resultDiv = document.getElementById('quiz-result');
-    resultDiv.classList.remove('hidden');
-    
-    let resultText = '';
-    if (correct === 4) {
-        resultText = `Отлично! 🎉 Ты знаешь меня на 100%! Это настоящая любовь! 💕`;
-    } else if (correct === 3) {
-        resultText = `Очень хорошо! 😊 Ты знаешь многое обо мне, и это здорово!`;
-    } else {
-        resultText = `Неплохо! 😄 Но мы еще много узнаем друг о друге!`;
-    }
-    
-    document.getElementById('result-text').textContent = resultText;
-    createHeartParticles(40);
-}
-
-function resetQuiz() {
-    quizAnswers = {};
-    document.querySelectorAll('.quiz-question').forEach(q => {
-        q.style.display = 'block';
-        q.querySelectorAll('.quiz-opt').forEach(btn => {
-            btn.disabled = false;
-            btn.classList.remove('correct', 'incorrect');
-        });
-    });
-    document.getElementById('quiz-result').classList.add('hidden');
-}
-
-document.getElementById('btn-restart-quiz')?.addEventListener('click', () => {
-    resetQuiz();
-    window.scrollTo({
-        top: document.getElementById('section-quiz').offsetTop,
-        behavior: 'smooth'
-    });
-});
+// Quiz удалена, викторина заменена на письмо
 
 // ==================== FLOATING PARTICLES ====================
 
@@ -136,7 +66,7 @@ function createHeartParticles(count) {
 
 // Добавляем сердца при кликах на интерактивные элементы
 document.addEventListener('click', (e) => {
-    if (e.target.matches('.btn, .quiz-opt, .gallery-card, .about-card, .flower')) {
+    if (e.target.matches('.btn, .gallery-card, .about-card, .flower, .letter-card')) {
         createHeartParticles(8);
     }
 });
