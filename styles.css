@@ -1,0 +1,485 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #ff1744;
+    --secondary-color: #ff5252;
+    --dark-color: #2d2d2d;
+    --light-color: #fff5f7;
+    --text-color: #333;
+    --border-radius: 20px;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #fff5f7 0%, #ffe0e6 100%);
+    color: var(--text-color);
+    position: relative;
+}
+
+.container {
+    max-width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Экраны */
+.screen {
+    display: none;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.screen.active {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Главный экран */
+#screen-main {
+    justify-content: center;
+    align-items: center;
+}
+
+.main-content {
+    text-align: center;
+    z-index: 10;
+}
+
+.title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    animation: bounce 2s infinite;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.flowers-container {
+    font-size: 2.5rem;
+    margin: 30px 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.flower {
+    animation: float 3s ease-in-out infinite;
+}
+
+.flower:nth-child(1) { animation-delay: 0s; }
+.flower:nth-child(2) { animation-delay: 0.5s; }
+.flower:nth-child(3) { animation-delay: 1s; }
+.flower:nth-child(4) { animation-delay: 1.5s; }
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-15px) rotate(5deg);
+    }
+}
+
+.message {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    margin: 20px 0;
+    font-weight: 500;
+}
+
+.buttons-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+/* Кнопки */
+.btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 23, 68, 0.3);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+}
+
+.btn-primary:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 8px rgba(255, 23, 68, 0.4);
+}
+
+.btn-secondary {
+    background: white;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-secondary:active {
+    transform: scale(0.95);
+}
+
+.btn-back {
+    background: none;
+    border: none;
+    padding: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Анимация сердца на главном экране */
+.heart-animation {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150px;
+    height: 150px;
+    opacity: 0.1;
+    animation: heartBeat 1.5s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes heartBeat {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    25% {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.heart-animation::before {
+    content: '❤️';
+    font-size: 150px;
+    position: absolute;
+}
+
+/* Признание */
+.confession-content {
+    margin-top: 20px;
+    position: relative;
+    z-index: 20;
+}
+
+.confession-text {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 30px;
+    box-shadow: 0 8px 30px rgba(255, 23, 68, 0.15);
+    margin-bottom: 30px;
+}
+
+.confession-line {
+    font-size: 1.1rem;
+    line-height: 2;
+    color: var(--text-color);
+    margin: 10px 0;
+}
+
+.confession-line.bold {
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 1.3rem;
+}
+
+.separation {
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--primary-color), transparent);
+    margin: 20px 0;
+}
+
+.floating-hearts {
+    position: relative;
+    height: 150px;
+    margin-top: 20px;
+}
+
+.float-heart {
+    position: absolute;
+    font-size: 1.5rem;
+    animation: floatUp 4s ease-in infinite;
+}
+
+.float-heart:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.float-heart:nth-child(2) {
+    left: 30%;
+    animation-delay: 0.8s;
+}
+
+.float-heart:nth-child(3) {
+    left: 50%;
+    animation-delay: 1.6s;
+}
+
+.float-heart:nth-child(4) {
+    left: 70%;
+    animation-delay: 2.4s;
+}
+
+.float-heart:nth-child(5) {
+    left: 90%;
+    animation-delay: 3.2s;
+}
+
+@keyframes floatUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-150px);
+    }
+}
+
+/* Галерея */
+.section-title {
+    text-align: center;
+    color: var(--primary-color);
+    margin: 20px 0;
+    font-size: 1.8rem;
+}
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.gallery-item {
+    background: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(255, 23, 68, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.gallery-item:active {
+    transform: scale(0.95);
+}
+
+.photo-placeholder {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+}
+
+.photo-caption {
+    padding: 12px;
+    font-size: 0.9rem;
+    text-align: center;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.gallery-note {
+    text-align: center;
+    color: #999;
+    font-size: 0.85rem;
+    margin-top: 15px;
+}
+
+/* Викторина */
+.quiz-container {
+    margin: 20px 0;
+}
+
+.quiz-question {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(255, 23, 68, 0.1);
+}
+
+.quiz-question h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.quiz-options {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.quiz-opt {
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    background: white;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.quiz-opt:active {
+    transform: scale(0.98);
+}
+
+.quiz-opt.correct {
+    background: #4caf50;
+    color: white;
+    border-color: #4caf50;
+}
+
+.quiz-opt.incorrect {
+    background: #f44336;
+    color: white;
+    border-color: #f44336;
+}
+
+.quiz-result {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(255, 23, 68, 0.2);
+    margin: 20px 0;
+}
+
+.quiz-result h2 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.quiz-result p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Плавающие частицы */
+#particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.particle {
+    position: absolute;
+    pointer-events: none;
+    animation: fall 3s ease-in forwards;
+}
+
+@keyframes fall {
+    0% {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+
+/* Мобильная оптимизация */
+@media (max-width: 600px) {
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .flowers-container {
+        font-size: 2rem;
+        gap: 10px;
+    }
+
+    .confession-text {
+        padding: 20px;
+    }
+
+    .confession-line {
+        font-size: 1rem;
+    }
+
+    .gallery-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Scrollbar стилизация */
+.container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.container::-webkit-scrollbar-thumb {
+    background: rgba(255, 23, 68, 0.3);
+    border-radius: 4px;
+}
+
+.container::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 23, 68, 0.5);
+}

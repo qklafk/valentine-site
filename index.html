@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой Сюрприз для Иры 💕</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    
+    <!-- Главный экран -->
+    <div id="screen-main" class="screen active">
+        <div class="container">
+            <div class="heart-animation"></div>
+            
+            <div class="main-content">
+                <h1 class="title">Ира 💕</h1>
+                <p class="subtitle">14 Февраля</p>
+                
+                <div class="flowers-container">
+                    <span class="flower">🌹</span>
+                    <span class="flower">🌷</span>
+                    <span class="flower">💐</span>
+                    <span class="flower">🌹</span>
+                </div>
+                
+                <p class="message">Я хочу рассказать тебе кое-что важное... 💭</p>
+                
+                <div class="buttons-container">
+                    <button class="btn btn-primary" id="btn-confession">Слушаю 👂</button>
+                    <button class="btn btn-secondary" id="btn-gallery">Галерея 📸</button>
+                    <button class="btn btn-secondary" id="btn-quiz">Викторина 🎯</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Экран признания -->
+    <div id="screen-confession" class="screen">
+        <div class="container">
+            <button class="btn-back" id="btn-back-confession">← Назад</button>
+            
+            <div class="confession-content">
+                <div class="confession-text">
+                    <p class="confession-line">Ира, 💕</p>
+                    <p class="confession-line">Ты - мое самое радостное открытие.</p>
+                    <p class="confession-line">С тобой каждый день становится ярче,</p>
+                    <p class="confession-line">а жизнь - безмерно красивее.</p>
+                    
+                    <div class="separation"></div>
+                    
+                    <p class="confession-line">Спасибо, что ты есть,</p>
+                    <p class="confession-line">что ты рядом,</p>
+                    <p class="confession-line">что ты - именно ТЫ.</p>
+                    
+                    <p class="confession-line bold">Я люблю тебя. 💕</p>
+                </div>
+                
+                <div class="floating-hearts">
+                    <span class="float-heart">❤️</span>
+                    <span class="float-heart">💕</span>
+                    <span class="float-heart">💖</span>
+                    <span class="float-heart">💗</span>
+                    <span class="float-heart">💓</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Экран галереи -->
+    <div id="screen-gallery" class="screen">
+        <div class="container">
+            <button class="btn-back" id="btn-back-gallery">← Назад</button>
+            
+            <h2 class="section-title">Наши Моменты 📸</h2>
+            
+            <div class="gallery-container">
+                <div class="gallery-item" id="photo-1">
+                    <div class="photo-placeholder">📷</div>
+                    <p class="photo-caption">Твоя школа: замечательный район 📍</p>
+                </div>
+                <div class="gallery-item" id="photo-2">
+                    <div class="photo-placeholder">🎬</div>
+                    <p class="photo-caption">Первый раз я тебя увидел... 👀</p>
+                </div>
+                <div class="gallery-item" id="photo-3">
+                    <div class="photo-placeholder">☕</div>
+                    <p class="photo-caption">Кофе с тобой - вкуснее ☕</p>
+                </div>
+                <div class="gallery-item" id="photo-4">
+                    <div class="photo-placeholder">🎵</div>
+                    <p class="photo-caption">Музыка нашей любви 🎶</p>
+                </div>
+                <div class="gallery-item" id="photo-5">
+                    <div class="photo-placeholder">🌙</div>
+                    <p class="photo-caption">Ночные разговоры 🌕</p>
+                </div>
+                <div class="gallery-item" id="photo-6">
+                    <div class="photo-placeholder">🎁</div>
+                    <p class="photo-caption">Будущее нас ждет 🌈</p>
+                </div>
+            </div>
+            
+            <p class="gallery-note">💡 Подсказка: можешь заменить фото на реальные! 📸</p>
+        </div>
+    </div>
+
+    <!-- Экран викторины -->
+    <div id="screen-quiz" class="screen">
+        <div class="container">
+            <button class="btn-back" id="btn-back-quiz">← Назад</button>
+            
+            <h2 class="section-title">Викторина про нас 🎯</h2>
+            
+            <div class="quiz-container">
+                <div class="quiz-question" id="quiz-1">
+                    <h3>Вопрос 1️⃣: Какой цвет мне нравится больше всего?</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-opt" data-correct="false">Зеленый</button>
+                        <button class="quiz-opt" data-correct="true">Красный (как твоя помада 💄)</button>
+                        <button class="quiz-opt" data-correct="false">Синий</button>
+                        <button class="quiz-opt" data-correct="false">Желтый</button>
+                    </div>
+                </div>
+
+                <div class="quiz-question" id="quiz-2">
+                    <h3>Вопрос 2️⃣: Когда мы познакомились?</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-opt" data-correct="false">Летом</button>
+                        <button class="quiz-opt" data-correct="true">В самый нужный момент правильный человек 💫</button>
+                        <button class="quiz-opt" data-correct="false">Зимой</button>
+                        <button class="quiz-opt" data-correct="false">По совету друзей</button>
+                    </div>
+                </div>
+
+                <div class="quiz-question" id="quiz-3">
+                    <h3>Вопрос 3️⃣: Мое любимое блюдо готовить для тебя?</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-opt" data-correct="false">Пицца</button>
+                        <button class="quiz-opt" data-correct="false">Паста</button>
+                        <button class="quiz-opt" data-correct="true">То, что нравится ТЕ́БЕ 🍽️</button>
+                        <button class="quiz-opt" data-correct="false">Суши</button>
+                    </div>
+                </div>
+
+                <div id="quiz-result" class="quiz-result hidden">
+                    <h2>Результаты 🎉</h2>
+                    <p id="result-text"></p>
+                    <button id="btn-restart-quiz" class="btn btn-primary">Попробовать еще раз</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Плавающие сердечки -->
+    <div id="particles"></div>
+
+    <script src="script.js"></script>
+    <audio id="bg-music" src="" loop></audio>
+</body>
+</html>
