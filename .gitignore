@@ -9,10 +9,24 @@
 .DS_Store
 Thumbs.db
 
-# Node (если будут скрипты)
+# Node & Build
 node_modules/
 npm-debug.log
+yarn-error.log
+dist/
+dist-ssr/
+build/
+.parcel-cache
+.cache
+out/
+
+# Vite
+.vite
 
 # Environment
 .env
 .env.local
+
+# Lock files
+yarn.lock
+package-lock.json
