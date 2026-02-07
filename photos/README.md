@@ -12,7 +12,7 @@
 <div class="gallery-image concert">🎤</div>
 
 <!-- Напишите: -->
-<img src="photos/photo1.jpg" alt="Фото" style="width:100%; height:100%; object-fit:cover;">
+<img src="photos/photo1.png" alt="Фото" style="width:100%; height:100%; object-fit:cover;">
 ```
 
 ## Поддерживаемые форматы
