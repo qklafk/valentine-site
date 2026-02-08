@@ -452,7 +452,7 @@ html {
 }
 
 .divider {
-  height: 2px;\n  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  height: 2px; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
   margin: 25px 0;
   position: relative;
   z-index: 1;
